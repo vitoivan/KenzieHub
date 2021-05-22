@@ -1,8 +1,11 @@
-import './app.css'
+import Routes from './routes/';
+import Background from './components/BG'
+
 const App = () => {
   return (
     <div className="App">
-      <div className="bg"></div>
+      <Background />
+      <Routes />
     </div>
   );
 }
