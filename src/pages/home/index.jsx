@@ -1,16 +1,10 @@
-import UserCard from '../../components/UserCard'
-import Select from '../../components/Select'
 import logo from '../../assets/image/logo-mini.svg';
-import { homeSelectOptions } from '../../assets/js/selects'
 import { StyledContainer, Header, StyledMain } from './styles';
 import ButtonLink from '../../components/ButtonLink';
 import { motion } from 'framer-motion';
 import { HomeAnimation, HomeTransition } from '../../assets/js/animations';
-import { useState } from 'react';
 
 const Home = ({ auth }) => {
-
-  const [ selectValue, setSelectValue ] = useState('all');
 
   return (
     <motion.div
@@ -23,20 +17,18 @@ const Home = ({ auth }) => {
        <StyledContainer>
         <Header>
           <img src={logo} alt="Kenzie Hub" />
-          <div>
-            <span>Filter by</span>
-            <Select options={homeSelectOptions} value={ selectValue } setValue={ setSelectValue } />
-          </div>
         </Header>
         <StyledMain>
-        <h1>Our users</h1>
-        <div>
-          <UserCard quarter='2' name='Victor Ivan'/>
-          <UserCard quarter='3' name='User 1'/>
-          <UserCard quarter='4' name='Bla  Bla'/>
-          <UserCard quarter='1' name='Testando'/>
-          <UserCard quarter='2' name='Diff Name'/>
-        </div>     
+        <h1>Kenzie Academy Hub</h1>
+        <p>This project was done by 
+          <a href="https://www.linkedin.com/in/victor-ivan">Victor Ivan</a>
+          , with the intention of imitating a social network, the Kenzie Academy Hub.
+          You can follow the entire creation process 
+          <a href="https://www.notion.so/Kenzie-Hub-bd7ce5eef7af4a11b8277a1531728df3">here.</a> 
+          The purpose of this project is to train and practice various React techniques and libraries together.
+
+          
+          </p>     
         </StyledMain>
         {
      

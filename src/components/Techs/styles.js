@@ -7,7 +7,9 @@ export const StyledContainer = styled.div`
   text-align: center;
   margin-top: 2rem;
 
-  h2{
+  a{
+    color: #fff;
+    text-decoration: underline;
     font-size: 16px;
     font-weight: 400;
   }

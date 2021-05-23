@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { StyledContainer } from './styles';
 import StyledInput from '../../components/Input';
 import { StyledTextArea } from '../singup/styles';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addTechSchema, addJobSchema } from '../../assets/js/schemas/schema';
@@ -21,7 +21,6 @@ const AddSomething = ({ auth, setUser, user }) => {
 
   const [inputValue, setInput] = useState('Tech');
   const [TechLevel, setTechLevel] = useState('Iniciante');
-  const history = useHistory();
   const { register, handleSubmit, formState:{ errors: formError } } = useForm({
     resolver: yupResolver( inputValue === 'Tech' ? addTechSchema : addJobSchema )
   })
@@ -44,14 +43,10 @@ const AddSomething = ({ auth, setUser, user }) => {
         headers:{ Authorization: `Bearer ${token}`  }
       })
       .then( response => {
-        const newTech = {
-          status: response.data.status,
-          title: response.data.title
-        }
         if(user.techs){
-          setUser({ ...user, techs: [...user.techs, newTech] })
+          setUser({ ...user, techs: [...user.techs, response.data] })
         }else{
-          setUser({ ...user, techs: [newTech] })
+          setUser({ ...user, techs: [response.data] })
         }
         toast.success('Technology successfully added', {
           position: "top-right",
@@ -86,14 +81,10 @@ const AddSomething = ({ auth, setUser, user }) => {
         headers:{ Authorization: `Bearer ${token}`  }
       })
       .then( response => {
-        const newWork = {
-          description: response.data.description,
-          title: response.data.title,
-        }
         if(user.works){
-          setUser({ ...user, works: [...user.works, newWork] })
+          setUser({ ...user, works: [...user.works, response.data] })
         }else{
-          setUser({ ...user, works: [newWork] })
+          setUser({ ...user, works: [response.data] })
         }
         toast.success('Work successfully added', {
           position: "top-right",

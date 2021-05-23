@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState(null);
-  
+
   return (
     <div className="App">
       <Background />

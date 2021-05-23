@@ -1,23 +1,17 @@
 import { StyledContainer } from './styles';
 import Tech from '../TechCard'
+import { Link } from 'react-router-dom';
 
 const Techs = ({ techs }) => {
 
   return(
     <StyledContainer >
-      <h2>Technologies</h2>
+      <Link to='/profile/techs' >Technologies</Link>
       <div className='tech-container'>
         {
           techs.length > 0 && (
             techs.map( (tech) => {
-              let percentage = 25;
-              if(tech.status === 'Intermediário'){
-                percentage = 50;
-              }
-              if(tech.status === 'Avançado'){
-                percentage = 100;
-              }
-              return <Tech key={tech.id} percentage={ percentage } title={tech.title}/>
+              return <Tech key={tech.id} status={ tech.status } title={tech.title}/>
             })
           )
         }

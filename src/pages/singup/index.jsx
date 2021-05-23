@@ -25,9 +25,8 @@ const Singup = ({ auth }) => {
     return <Redirect to='/profile'/>
   }
 
-
-
   const handleRegister = data => {
+
     axios({
       method:'post',
       url: `https://kenziehub.me/users/`,
@@ -42,7 +41,7 @@ const Singup = ({ auth }) => {
         draggable: true,
         progress: undefined,
       });
-    }).catch( e => toast.error('Email already registered or server unabailable', {
+    }).catch( e => toast.error(`Email already registered or server unabailable`, {
       position: "top-right",
       autoClose: 4000,
       hideProgressBar: false,
@@ -102,15 +101,23 @@ const Singup = ({ auth }) => {
             />
           <StyledInput 
             placeholder='Your module (quarter)'
-            error={formError.quarter ? true : false}
-            helperTxt={formError.quarter?.message}
+            error={formError.course_module ? true : false}
+            helperTxt={formError.course_module ? 'Course module is required' : ''}
             register={ register }
             name='course_module'
             type='Number'
             min={1}
             max={4}
             />
-          <StyledTextArea cols={25} rows={4} maxLength={200} placeholder='Bio (optional)'{ ...register('bio') }/>
+
+          <StyledTextArea 
+          cols={25}
+          rows={4} 
+          maxLength={200} 
+          placeholder={ formError.bio ? formError.bio.message : "Bio" }
+          { ...register('bio') }
+
+          />
 
           <div className="haveAcc">
           <p>Already have an account? login <Link to='/login'>here</Link></p>

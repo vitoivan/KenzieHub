@@ -4,7 +4,8 @@ import arrow from '../../assets/image/select-arrow.svg';
 
 
 
-const Select = ({ options, value='', setValue, }) => {
+const Select = ({ options, value='', setValue, spacing }) => {
+
 
   const [openned, setOpenned] = useState(false);
   const handleSelect = (value) => {
@@ -14,7 +15,7 @@ const Select = ({ options, value='', setValue, }) => {
   
   const toggleOpenned = () => setOpenned(!openned)
   return (
-      <StyledSelect className='select' onClick={toggleOpenned}>
+      <StyledSelect spacing={spacing} className='select' onClick={toggleOpenned}>
   
         <input type="text" onFocus={beBlur} onChange={ e => setValue(e.target.value) } value={value} maxLength={0} minLength={0} id='select-input' />
         <img src={arrow} alt="Arrow" />
@@ -22,7 +23,7 @@ const Select = ({ options, value='', setValue, }) => {
           openned && (
             <>
               {
-               options.map( (option, index) => <div  key={index} className='option' onClick={ e => handleSelect(e.target.innerText) }>{ option }</div>) 
+               !!options && options.map( (option, index) => <div  key={index} className='option' onClick={ e => handleSelect(e.target.innerText) }>{ option }</div>) 
               }
             </>
           )

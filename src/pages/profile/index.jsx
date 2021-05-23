@@ -19,7 +19,6 @@ const Profile = ({ auth, setAuth, setUser, user }) => {
   if(!auth){
     return  <Redirect to='/login' />
   }
-
   const buttonClick = () => {
     setAuth(false);
     setUser(null);

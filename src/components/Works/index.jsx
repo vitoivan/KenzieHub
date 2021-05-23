@@ -7,7 +7,11 @@ const Works = ({ works }) => {
       <h2>Works</h2>
       <div className='work-container'>
       {
-       works && works.length > 0 && works.map( work => <Work work={work} key={work.id} />)
+       works && works.length > 0 && works.map( (work,index) => {
+        
+          return <Work work={work} key={index} />
+        
+       })
       }
       </div>
 

@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
-  position: relative;
+
+  & > div {
+    position: relative;
+  }
   h3{
     font-weight: 400;
     font-size: 12px;
     position: relative;
     top: -5px;
+
   }
   p{
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
   }

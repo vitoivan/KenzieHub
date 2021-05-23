@@ -15,12 +15,32 @@ const Global = createGlobalStyle`
   .App{
     min-height: 100vh;
     position: absolute;
-    max-width: 100vw;
     width: 100vw;
+    max-width: 100vw;
     top:0;
     left: 0;
     box-sizing: content-box;
     padding-bottom: 2rem;
+    margin: 0 auto;
+  }
+  html{
+    overflow-x: hidden;
+    background: rgba(29, 97, 199, 0.75);
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      border: none;
+      background: linear-gradient(to bottom, rgba(66,0,255,0.75), rgba(124,63,255,1), rgba(244,99,99,1), rgba(255, 92, 0, 0.75));
+    }
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+      border: 1px solid #fff;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-thumb {
+      border-radius: 150px;
+    }
   }
   body{
     color: var(--font-color);

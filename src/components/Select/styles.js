@@ -56,11 +56,6 @@ export const StyledSelect = styled.div`
     }
 
     @media only screen and (min-width:768px){
-      > div {
-        filter: blur(2px);
-      }
-      > div:hover {
-        filter: blur(0px);
-      }
+
     }
 `;

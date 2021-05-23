@@ -85,7 +85,7 @@ return (
         <StyledInput 
           placeholder='Contact'
           register={register}
-          defaultValue={user.email}
+          defaultValue={user.contact}
           name='contact'
           error={formError.contact ? true : false}
           helperTxt={formError.contact?.message}

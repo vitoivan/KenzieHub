@@ -14,7 +14,7 @@ const RegisterSchema = Yup.object().shape({
   course_module: Yup.number().required('Quarter is required'),
   name: Yup.string().required('Name is required'),
   contact: Yup.string().required('Contact is required'),
-  bio: Yup.string()
+  bio: Yup.string().required('Bio is required')
 });
 const addJobSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),

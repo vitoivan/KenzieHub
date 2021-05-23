@@ -5,6 +5,7 @@ import Profile from '../pages/profile';
 import Singup from '../pages/singup';
 import Settings from '../pages/settings';
 import AddSomething from '../pages/addSomething'
+import EditSomething from '../pages/EditSomething'
 import { AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
@@ -44,6 +45,9 @@ return(
     </Route>
     <Route exact path='/profile/config'>
       <Settings auth={auth} user={user} setUser={setUser} />
+    </Route>
+    <Route exact path='/profile/techs'>
+      <EditSomething auth={auth} user={user} setUser={setUser} />
     </Route>
     <Route exact path='/profile/add'>
       <AddSomething auth={auth} user={user} setUser={setUser}/>

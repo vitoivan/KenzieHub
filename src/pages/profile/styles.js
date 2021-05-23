@@ -12,13 +12,17 @@ export const StyledContainer = styled.div`
     margin: 0 auto;
     padding-top: 2rem;
     margin-bottom: 1rem;
+    max-width: 600px;
   }
   main{
+    max-width: 800px;
+    margin: 0 auto;
   }
   main .profile{
     margin-top: .8rem;
     width: 85%;
-    margin: 0 auto; 
+    margin: 0 auto;
+
   }
   button{
     background: none;

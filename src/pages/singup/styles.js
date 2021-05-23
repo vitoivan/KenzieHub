@@ -3,13 +3,18 @@ import styled from "styled-components";
 export const StyledContainer = styled.div`
 
 header{
-  height: 10vh;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 10vh;
   margin-bottom: 1rem;
 }
 header > a{
-  width: 30%;
+  width: 40%;
+  max-width: 170px;
   margin: 10px 25px 0 0;
   padding: 0;
   height: fit-content;
@@ -57,6 +62,7 @@ a{
   height: 52.99px;
   text-decoration: none;
 }
+
 `;
 
 export const StyledTextArea = styled.textarea`
