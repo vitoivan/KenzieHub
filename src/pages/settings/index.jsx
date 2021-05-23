@@ -15,6 +15,11 @@ import { SettingsSchema, SettingsWithoutPasswordSchema } from '../../assets/js/s
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const modulo1 = "Primeiro módulo (Introdução ao Frontend)"
+const modulo2 = "Segundo módulo (Frontend Avançado)";
+const modulo3 = "Terceiro módulo (Introdução ao Backend)";
+const modulo4 = "Quarto módulo (Backend Avançado)";
+
 const Settigs = ({ auth, user, setUser }) => {
 
 
@@ -24,6 +29,21 @@ const { register, handleSubmit, formState:{ errors: formError } } = useForm({
 })
 
 const handleChangeSettings = data => {
+
+  if(data.course_module === 1){
+    data.course_module = "Primeiro módulo (Introdução ao Frontend)"
+  }
+  if(data.course_module === 2){
+    data.course_module = "Segundo módulo (Frontend Avançado)"
+  }
+  if(data.course_module === 3){
+    data.course_module = "Terceiro módulo (Introdução ao Backend)"
+  }
+  if(data.course_module === 4){
+    data.course_module = "Quarto módulo (Backend Avançado)"
+  }
+
+  console.log(data)
   const token = localStorage.getItem('@KenzieHub token');
   axios({
     method: 'put',
@@ -93,7 +113,7 @@ return (
         <StyledInput 
           placeholder='Course Module'
           register={register}
-          defaultValue={user.course_module}
+          defaultValue={user.course_module === 1 ? modulo1 : user.course_module === 2 ? modulo2 : user.course_module === 3 ? modulo3 : user.course_module === 4 ? modulo4 : user.course_module }
           name='course_module'
           error={formError.course_module ? true : false}
           helperTxt={formError.course_module?.message}

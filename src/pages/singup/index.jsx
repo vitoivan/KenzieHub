@@ -13,8 +13,6 @@ import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-
-
 const Singup = ({ auth }) => {
 
   const { register, handleSubmit, formState:{ errors: formError } } = useForm({
@@ -26,6 +24,19 @@ const Singup = ({ auth }) => {
   }
 
   const handleRegister = data => {
+    
+    if(data.course_module === 1){
+      data.course_module = "Primeiro módulo (Introdução ao Frontend)"
+    }
+    if(data.course_module === 2){
+      data.course_module = "Segundo módulo (Frontend Avançado)"
+    }
+    if(data.course_module === 3){
+      data.course_module = "Terceiro módulo (Introdução ao Backend)"
+    }
+    if(data.course_module === 4){
+      data.course_module = "Quarto módulo (Backend Avançado)"
+    }
 
     axios({
       method:'post',
