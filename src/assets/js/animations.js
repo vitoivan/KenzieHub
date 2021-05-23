@@ -62,7 +62,7 @@ const ProfileAnimation = {
     x: '0',
   },
   out: {
-    y: '-200vh',
+    y: '-300vh',
   },
 }
 const ProfileTransition = {

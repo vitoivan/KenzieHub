@@ -1,25 +1,26 @@
 import { StyledContainer } from './styles';
 import Tech from '../TechCard'
 
-const Techs = () => {
+const Techs = ({ techs }) => {
 
   return(
     <StyledContainer >
       <h2>Technologies</h2>
       <div className='tech-container'>
-        <Tech percentage={ 100 } title='Node'/>
-        <Tech percentage={ 25 } title='JavaScript'/>
-        <Tech percentage={ 50 } title='JavaScript'/>
-        <Tech percentage={ 25 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 50 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
-        <Tech percentage={ 100 } title='JavaScript'/>
+        {
+          techs.length > 0 && (
+            techs.map( (tech) => {
+              let percentage = 25;
+              if(tech.status === 'Intermediário'){
+                percentage = 50;
+              }
+              if(tech.status === 'Avançado'){
+                percentage = 100;
+              }
+              return <Tech key={tech.id} percentage={ percentage } title={tech.title}/>
+            })
+          )
+        }
       </div>
     </StyledContainer>
 

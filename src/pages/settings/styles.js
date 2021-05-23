@@ -15,7 +15,7 @@ export const StyledContainer = styled.div`
   
   padding-top: 2rem;
   a{
-    margin-left: 1rem;
+    margin-left: 1.6rem;
   }
   h1{
     font-weight: 300;
@@ -35,7 +35,7 @@ export const StyledContainer = styled.div`
     height: 46px;
   }
   label + label{
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
   div > label{
     padding: 0 25px;
@@ -55,5 +55,15 @@ export const StyledContainer = styled.div`
     font-size: 14px;
     margin-left: 15px;
     cursor: pointer;
+  }
+
+  textarea{
+    width: 70%;
+  }
+  .error{
+    width: 100%;
+    position: absolute;
+    top: -20px;
+    font-size: 12px;
   }
 `;

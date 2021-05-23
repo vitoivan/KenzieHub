@@ -1,10 +1,10 @@
 import { InputContainer } from './styles'
 
-const Input = ({ placeholder ,error=false, helperTxt=''}) => {
+const Input = ({ placeholder ,error=false, helperTxt='', name, register, type='text', defaultValue='', min, max}) => {
   return (
     <InputContainer error={error}>
-      { error && <p>* {helperTxt}</p> }
-      <input type="text" placeholder={placeholder} autoComplete='off'/>
+    { error && <p className='error'>* {helperTxt}</p> }
+      <input min={min} max={max} defaultValue={defaultValue} placeholder={placeholder} autoComplete='off'  {...register(name) } type={type}/>
     </InputContainer>
   )
 }

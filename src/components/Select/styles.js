@@ -29,7 +29,6 @@ export const StyledSelect = styled.div`
       color: #fff;
       padding: 0 .5rem 0 1.3rem;
       caret-color: transparent;
-      
     }
 
     > div {

@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
 
+  padding-top: 2rem;
   > a{
     display: inline-block;
-    margin: 1rem 0 0 1rem;
+    margin: 0 0 0 2rem;
   }
 
   h1{
@@ -43,6 +44,12 @@ export const StyledContainer = styled.div`
     margin-bottom: 1rem;
     width: 80%;
   }
+   label p{
+    position: absolute;
+    font-size: 12px;
+    left: 0;
+    top: -22px;
+  }
   .tech-content label input::placeholder{
     font-size: 16px;
   }
@@ -61,5 +68,11 @@ export const StyledContainer = styled.div`
   }
   textarea{
     width: 80%;
+  }
+  button{
+    margin: 50px auto;
+    padding: 0;
+    width: 105px;
+    height: 46px;
   }
 `;

@@ -5,7 +5,6 @@ const TechCard = ({ percentage=0, title=''}) => {
 
 
 
-
   return(
     <StyledContainer percent={percentage} className='tech' >
       <h3>{ title }</h3>

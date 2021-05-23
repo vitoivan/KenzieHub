@@ -4,14 +4,29 @@ import Techs from '../../components/Techs';
 import logo from '../../assets/image/logo-mini.svg';
 import logout from '../../assets/image/logout-icon.svg';
 import config from '../../assets/image/config-icon.svg';
-import { testUser } from '../../assets/js/selects';
 import AddTechBtn from '../../components/Addtech'
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom'
 import { ProfileAnimation, ProfileTransition } from '../../assets/js/animations';
+import { Redirect, useHistory } from 'react-router-dom';
+import Works from '../../components/Works';
 
 
-const Profile = () => {
+const Profile = ({ auth, setAuth, setUser, user }) => {
+
+  const history = useHistory();
+
+  if(!auth){
+    return  <Redirect to='/login' />
+  }
+
+  const buttonClick = () => {
+    setAuth(false);
+    setUser(null);
+    localStorage.removeItem('@KenzieHub token');
+    history.push('/login');
+  }
+
   return (
     <>
     <motion.div
@@ -23,14 +38,15 @@ const Profile = () => {
     >
       <StyledContainer>
       <header>
-        <Link to='/profile/config'>  <img src={config} alt="User settings" /></Link>
+        <Link to='/profile/config'> <img src={config} alt="User settings" /></Link>
         <Link to='/'><img src={logo} alt="Kenzie Hub" /></Link>
-        <Link to='/login'><img src={logout} alt="Logout" /></Link>
+        <button onClick={buttonClick} ><img src={logout} alt="Logout" /></button>
 
       </header>
       <main>
-        <User user={testUser}/>
-        <Techs />
+        <User user={user}/>
+        <Techs techs={user.techs} />
+        <Works works={user.works} />
       </main>
     </StyledContainer>
     </motion.div>

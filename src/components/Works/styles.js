@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
 
-
 export const StyledContainer = styled.div`
 
-  text-align: center;
-  margin-top: 2rem;
-
   h2{
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 1rem;
   }
-  .tech-container {
+
+.work-container {
     width: 80%;
-    margin: 1rem auto;
+    margin: .8rem auto;
     display: flex;
     flex-flow: wrap row;
     overflow-y: auto;
@@ -38,18 +37,6 @@ export const StyledContainer = styled.div`
   & > div::-webkit-scrollbar-track,
   & > div::-webkit-scrollbar-thumb {
     border-radius: 50px;
-  }
-
-  .tech{
-    width: 50%;
-    height: fit-content;
-  }
-  .tech h3{
-    width: fit-content;
-    margin: 0 auto;
-  }
-  .tech{
-    margin-top: 1rem;
   }
 
 `;

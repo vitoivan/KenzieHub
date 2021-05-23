@@ -21,6 +21,17 @@ export const StyledContainer = styled.div`
   .buttons .button + .button{
     margin-left: 2rem;
   }
+  & > a{
+    display: block;
+    width: 158px;
+    height: 46px;
+    font-size: 14px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+  }
 `;
 export const Header = styled.header`
   display: flex;
@@ -46,6 +57,7 @@ export const Header = styled.header`
     text-align: center;
     font-size: .8rem;
   }
+
   .select{
     border: 2px solid #fff;
     width: fit-content;
@@ -99,7 +111,7 @@ export const StyledMain = styled.main`
   .user-card + .user-card{
     margin-top: 1rem;
   }
-  
+
   & > div {
     overflow-y: auto;
     padding: 0 30px;

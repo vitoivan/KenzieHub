@@ -8,12 +8,115 @@ import { AddOptions } from '../../assets/js/selects'
 import { useState } from 'react';
 import { StyledContainer } from './styles';
 import StyledInput from '../../components/Input';
-import { StyledTextArea } from '../singup/styles'
+import { StyledTextArea } from '../singup/styles';
+import { Redirect, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { addTechSchema, addJobSchema } from '../../assets/js/schemas/schema';
+import Button from '../../components/SubmitButton';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const AddSomething = () => {
+const AddSomething = ({ auth, setUser, user }) => {
 
   const [inputValue, setInput] = useState('Tech');
-  const [TechLevel, setTechLevel] = useState('Initial')
+  const [TechLevel, setTechLevel] = useState('Iniciante');
+  const history = useHistory();
+  const { register, handleSubmit, formState:{ errors: formError } } = useForm({
+    resolver: yupResolver( inputValue === 'Tech' ? addTechSchema : addJobSchema )
+  })
+  
+  if(!auth){
+   return  <Redirect to='/login' />
+  }
+
+  const handleAdd = data => {
+    if(inputValue === 'Tech'){
+      const token = localStorage.getItem('@KenzieHub token');
+     const dataToSend = {
+        title: data.title,
+        status: TechLevel,
+      }
+      axios({
+        method: 'post',
+        url: `https://kenziehub.me/users/techs`,
+        data: dataToSend,
+        headers:{ Authorization: `Bearer ${token}`  }
+      })
+      .then( response => {
+        const newTech = {
+          status: response.data.status,
+          title: response.data.title
+        }
+        if(user.techs){
+          setUser({ ...user, techs: [...user.techs, newTech] })
+        }else{
+          setUser({ ...user, techs: [newTech] })
+        }
+        toast.success('Technology successfully added', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        })
+      }).catch( e => toast.error('Unable to add a new tech', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }))
+
+    }else{
+      const token = localStorage.getItem('@KenzieHub token');
+      const dataToSend = {
+        title: data.title,
+        description: data.description,
+        deploy_url: 'https://kenziehub.me'
+      }
+      axios({
+        method: 'post',
+        url: `https://kenziehub.me/users/works`,
+        data: dataToSend,
+        headers:{ Authorization: `Bearer ${token}`  }
+      })
+      .then( response => {
+        const newWork = {
+          description: response.data.description,
+          title: response.data.title,
+        }
+        if(user.works){
+          setUser({ ...user, works: [...user.works, newWork] })
+        }else{
+          setUser({ ...user, works: [newWork] })
+        }
+        toast.success('Work successfully added', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        })
+      }).catch( e => toast.error('Unable to add a new work', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }))
+    }
+
+  }
+
 
   return(
     <>
@@ -31,14 +134,19 @@ const AddSomething = () => {
       <h1>I wanna add a new</h1>
       <Select options={ AddOptions } value={ inputValue } setValue={ setInput } />
     </div>
+    <form onSubmit={handleSubmit(handleAdd)}>
     {   
       inputValue === 'Job' && (
         <div className='tech-content'>
           <StyledInput
-          helperTxt='Email is required'
-          placeholder='Email'/> 
+          error={formError.title ? true : false}
+          helperTxt={formError.title?.message}
+          placeholder='Job title'
+          register={register}
+          name='title'
+          /> 
 
-        <StyledTextArea cols={25} rows={8} maxLength={200} placeholder='Bio'/>
+        <StyledTextArea {...register("description")} cols={25} rows={8} maxLength={200} placeholder='Bio'/>
         </div>
       )
     }
@@ -46,14 +154,20 @@ const AddSomething = () => {
       inputValue === 'Tech' && (
         <div className='tech-content'>
           <StyledInput
-          helperTxt='Email is required'
-          placeholder='Tech title'/> 
+          helperTxt={formError.title?.message}
+          error={formError.title ? true : false}
+          placeholder='Tech title'
+          name='title'
+          register={register}
+          /> 
  
-         Status:<Select options={['Initial', 'Intermediate', 'Advanced']} value={ TechLevel } setValue={ setTechLevel } />
+         Status:<Select register={register} text='status' options={['Iniciante', 'Intermediário', 'Avançado']} value={ TechLevel } setValue={ setTechLevel } />
 
         </div>
       )
     }
+    <Button>Add {inputValue}</Button>
+    </form>
     </StyledContainer>
     </motion.div>
     </>

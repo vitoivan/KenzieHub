@@ -1,7 +1,7 @@
 import { StyledContainer } from './styles';
 import profilePic from '../../assets/image/Profile-pic.svg';
 
-const UserCard = ({ quarter, name}) => {
+const UserCard = ({ quarter, name }) => {
 
   return(
     <StyledContainer className='user-card'>

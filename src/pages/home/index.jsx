@@ -8,9 +8,10 @@ import { motion } from 'framer-motion';
 import { HomeAnimation, HomeTransition } from '../../assets/js/animations';
 import { useState } from 'react';
 
-const Home = () => {
+const Home = ({ auth }) => {
 
   const [ selectValue, setSelectValue ] = useState('all');
+
   return (
     <motion.div
       initial='in'
@@ -37,10 +38,17 @@ const Home = () => {
           <UserCard quarter='2' name='Diff Name'/>
         </div>     
         </StyledMain>
-        <div className='buttons'>
-          <ButtonLink to='/login'>Login</ButtonLink>
-          <ButtonLink to='/singup'>Singup</ButtonLink>
-        </div>
+        {
+     
+          auth === false ? (
+          <div className='buttons'>
+            <ButtonLink to='/login'>Login</ButtonLink>
+            <ButtonLink to='/singup'>Singup</ButtonLink>
+          </div>
+          ):(
+            <ButtonLink to='/profile'>Go to profile</ButtonLink>
+          )
+        }
     </StyledContainer>
     </motion.div>
    

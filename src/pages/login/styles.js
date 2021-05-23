@@ -29,11 +29,11 @@ export const StyledContainer = styled.div`
   form label + label{
     margin-top: 28px;
   }
-  form label p {
+  form label .error {
     position: absolute;
     left: 10px;
     top: -36px;
-    color: var(--error);
+    color: #Fff;
     font-size: 14px;
   }
   .button{
