@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import { ProfileAnimation, ProfileTransition } from '../../assets/js/animations';
 import { Redirect, useHistory } from 'react-router-dom';
 import Works from '../../components/Works';
-
+import EditBtn from '../../components/EditBtn'
 
 const Profile = ({ auth, setAuth, setUser, user }) => {
 
@@ -50,6 +50,7 @@ const Profile = ({ auth, setAuth, setUser, user }) => {
     </StyledContainer>
     </motion.div>
       <AddTechBtn />
+      <EditBtn />
         </>
   )
 }

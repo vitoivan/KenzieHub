@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledContainer = styled.div`
 
   position: relative;
-
   header{
     display: flex;
     justify-content: space-between;

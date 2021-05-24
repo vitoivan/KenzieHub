@@ -1,12 +1,11 @@
 import { StyledContainer } from './styles';
 import Tech from '../TechCard'
-import { Link } from 'react-router-dom';
 
 const Techs = ({ techs }) => {
 
   return(
     <StyledContainer >
-      <Link to='/profile/techs' >Technologies</Link>
+      <h2>Technologies</h2>
       <div className='tech-container'>
         {
           techs.length > 0 && (
