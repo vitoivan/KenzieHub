@@ -23,6 +23,7 @@ const Profile = ({ auth, setAuth, setUser, user }) => {
     setAuth(false);
     setUser(null);
     localStorage.removeItem('@KenzieHub token');
+    localStorage.removeItem('@KenzieHub user');
     history.push('/login');
   }
 
