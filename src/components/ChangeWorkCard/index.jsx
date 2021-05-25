@@ -97,8 +97,6 @@ const ChangeWorkCard = ({ work, setUser, user}) => {
 
   }
 
-
-
   return(
     <StyledContainer>
      <div>
@@ -107,7 +105,7 @@ const ChangeWorkCard = ({ work, setUser, user}) => {
      </div>
       <div>
         <h4>Decsription</h4>
-        <StyledTextArea rows={7} value={inputDescription} omChange={e => setInputDescription(e.target.value)} />
+        <StyledTextArea rows={7} value={inputDescription} onChange={e => setInputDescription(e.target.value)} />
       </div>
     <button className='delete'><img src={Mark} alt="Delete"  onClick={handleDelete} /></button>
     <button className='save' onClick={handleEdit} >Save changes</button>
